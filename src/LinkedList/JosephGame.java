@@ -9,16 +9,13 @@ public class JosephGame {
     }
 
     public void create() throws Exception {
-        System.out.print("总人数的顺序为");
+        System.out.print("总人数的顺序为：");
         for(int i = 0; i < 30; i++){
             insert(i, i + 1);
         }
-        Node p = head.getNext();
-        while (!p.equals(head)){
-            p = p.getNext();
-        }
-        p.setNext(head.getNext());
-        System.out.println(p.getData());
+//        Node p = get();
+//        p.setNext(head.getNext());
+//        System.out.println(p.getData());
 
     }
 
@@ -46,17 +43,31 @@ public class JosephGame {
         System.out.println();
     }
 
-    public Object get(int i) throws Exception {
+    public Node get() throws Exception {
         Node p = head.getNext();
         int j = 0;
-        while (!p.equals(head) && j < i){
+        while (!p.equals(head) && j < 29){
             p = p.getNext();
             ++j;
         }
-        return p.getData();
+        return p;
     }
 
-    public void service(){
+    public int length(){
+        Node p = head.getNext();
+
+        return 0;
+    }
+
+    public void remove(){
+        int order = 9;
+        Node p = head.getNext();
+        int j = 0;
+        while(!p.equals(head) && j < 8){
+            p = p.getNext();
+            ++j;
+        }
+        System.out.println("这是：" + p.getData());
 
     }
 
@@ -64,7 +75,6 @@ public class JosephGame {
         JosephGame josephGame = new JosephGame();
         josephGame.create();
         josephGame.display();
-        System.out.println(josephGame.get(30));
-
+        josephGame.remove();
     }
 }

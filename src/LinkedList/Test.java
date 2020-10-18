@@ -1,25 +1,22 @@
 package LinkedList;
 
 public class Test {
-    private Node first;
+    private Node head;
     private Node tail;
 
     public Test() {
-        first = new Node(1);
-        tail = first;
+        head = new Node();
     }
 
     public void creat() throws Exception{
-        System.out.print("总人数的顺序为");
-        for(int i = 2; i <= 30; i++){
-           tail = new Node(i);
+        for (int i = 0; i < 30; i++){
+
         }
-        tail.setNext(first);
     }
 
     public void display(){
-        Node node = first.getNext();
-        while (!node.equals(first)){
+        Node node = head.getNext();
+        while (!node.equals(head)){
             System.out.print(node.getData() + " ");
             node = node.getNext();
         }
