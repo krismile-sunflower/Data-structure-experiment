@@ -45,6 +45,6 @@ public class yuesefu {
 
     public static void main(String[] args) {
         yuesefu y = new yuesefu();
-        y.begin(30);
+        y.begin(31);
     }
 }
