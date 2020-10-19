@@ -1,5 +1,8 @@
 package LinkedList;
 
+/**
+ * 测试约瑟夫生死游戏
+ */
 public class JosephGame {
     private Node head;
 
@@ -9,8 +12,8 @@ public class JosephGame {
     }
 
     public void create() throws Exception {
-        System.out.print("总人数的顺序为：");
-        for(int i = 0; i < 30; i++){
+        System.out.print("人数的顺序为：");
+        for (int i = 0; i < 30; i++) {
             insert(i, i + 1);
         }
 //        Node p = get();
@@ -19,14 +22,14 @@ public class JosephGame {
 
     }
 
-    public void insert(int i, Object x) throws Exception{
+    public void insert(int i, Object x) throws Exception {
         Node p = head;
         int j = -1;
-        while((!p.equals(head) || j == -1) && j < i - 1){
+        while ((!p.equals(head) || j == -1) && j < i - 1) {
             p = p.getNext();
             ++j;
         }
-        if(j > i - 1 || p.equals(head) && j != -1){
+        if (j > i - 1 || p.equals(head) && j != -1) {
             throw new Exception("插入的位置不合理");
         }
         Node s = new Node(x);
@@ -34,9 +37,9 @@ public class JosephGame {
         p.setNext(s);
     }
 
-    public void display(){
+    public void display() {
         Node node = head.getNext();
-        while (!node.equals(head)){
+        while (!node.equals(head)) {
             System.out.print(node.getData() + " ");
             node = node.getNext();
         }
@@ -46,28 +49,34 @@ public class JosephGame {
     public Node get() throws Exception {
         Node p = head.getNext();
         int j = 0;
-        while (!p.equals(head) && j < 29){
+        while (!p.equals(head) && j < 29) {
             p = p.getNext();
             ++j;
         }
         return p;
     }
 
-    public int length(){
+    public int length() {
         Node p = head.getNext();
-
         return 0;
     }
 
-    public void remove(){
-        int order = 9;
-        Node p = head.getNext();
-        int j = 0;
-        while(!p.equals(head) && j < 8){
-            p = p.getNext();
-            ++j;
+    public void remove() throws Exception {
+        for (int i = 0; i < 15; i++) {
+            Node p = head.getNext();
+            int j = 2;
+            int k = 9;
+            // 9   18  27
+            while (!p.equals(head) && j < 9) {
+                p = p.getNext();
+                ++j;
+            }
+            System.out.println("死亡的人是：" + p.getNext().getData());
+            p.setNext(p.getNext().getNext());
+            System.out.print("显示出的人是：");
+            display();
+            head = p;
         }
-        System.out.println("这是：" + p.getData());
 
     }
 
