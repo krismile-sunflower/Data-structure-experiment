@@ -1,4 +1,6 @@
-package SequenceTable;
+package SequenceTable.Experiment2;
+
+import SequenceTable.SqList;
 
 public class SqList3 {
     public static void main(String[] args) throws Exception {

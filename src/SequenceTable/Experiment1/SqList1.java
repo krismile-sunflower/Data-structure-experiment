@@ -1,4 +1,6 @@
-package SequenceTable;
+package SequenceTable.Experiment1;
+
+import SequenceTable.SqList;
 
 import java.util.Scanner;
 

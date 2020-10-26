@@ -1,4 +1,6 @@
-package LinkedList;
+package LinkedList.Experiment3;
+
+import LinkedList.Node;
 
 import java.util.Scanner;
 

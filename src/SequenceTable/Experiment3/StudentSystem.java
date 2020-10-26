@@ -1,4 +1,7 @@
-package SequenceTable;
+package SequenceTable.Experiment3;
+
+import SequenceTable.Experiment3.Student;
+import SequenceTable.Experiment3.StudentMethod;
 
 public class StudentSystem {
     public static void main(String[] args) throws Exception {
@@ -16,17 +19,22 @@ public class StudentSystem {
         studentMethod.insert(3, student4);
         studentMethod.insert(4, student5);
         studentMethod.insert(5, student6);
+        System.out.println("一开始的所有学生：");
         studentMethod.display();
         System.out.println();
+        System.out.println("根据id查找学生：");
         System.out.println(studentMethod.findStudentById(2008001));
-        System.out.println(studentMethod.findStudentByName("Amy"));
-        studentMethod.modifyStudent(2008001, 70);
         System.out.println();
+        System.out.println("根据姓名查找学生");
+        System.out.println(studentMethod.findStudentByName("Amy"));
+        System.out.println("修改学生信息后（修改学号为2008001的成绩为70）：");
+        studentMethod.modifyStudent(2008001, 70);
         studentMethod.display();
+        System.out.println("增加学生后：");
         studentMethod.insert(6, student7);
         studentMethod.display();
+        System.out.println("删除后的元素（删除id为0的学生）：");
         studentMethod.remove(0);
-        System.out.println("删除后的元素：");
         studentMethod.display();
     }
 }

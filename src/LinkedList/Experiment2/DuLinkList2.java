@@ -1,8 +1,11 @@
-package LinkedList;
+package LinkedList.Experiment2;
+
+import LinkedList.DuLNode;
+import LinkedList.DuLinkList;
 
 import java.util.Scanner;
 
-public class DuLinkList1 {
+public class DuLinkList2 {
     private static void creatDuLCircleLinkList(DuLinkList L, int n) throws Exception{
         Scanner sc = new Scanner(System.in);
         System.out.print("请输入双向循环链表中的各元素值：");
@@ -16,9 +19,8 @@ public class DuLinkList1 {
         int n = 4;
         creatDuLCircleLinkList(L, n);
 
-        System.out.print("链表为：");
-        L.insert(4, 5);
+        L.move();
+        System.out.print("新的链表为：");
         L.display();
-
     }
 }

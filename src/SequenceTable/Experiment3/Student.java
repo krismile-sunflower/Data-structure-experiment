@@ -1,4 +1,4 @@
-package SequenceTable;
+package SequenceTable.Experiment3;
 
 public class Student {
     private int id;

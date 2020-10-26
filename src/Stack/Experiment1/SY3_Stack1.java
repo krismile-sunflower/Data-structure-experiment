@@ -1,4 +1,7 @@
-package Stack;
+package Stack.Experiment1;
+
+import Stack.LinkStack;
+import Stack.SqStack;
 
 import java.util.Scanner;
 

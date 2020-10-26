@@ -1,4 +1,6 @@
-package SequenceTable;
+package SequenceTable.Experiment3;
+
+import SequenceTable.Experiment3.Student;
 
 public class StudentMethod {
     private Student[] students; //线性表储存空间
