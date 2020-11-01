@@ -53,6 +53,15 @@ public class LinkStack implements IStack{
     }
 
     @Override
+    public Object getTop(){
+        if(isEmpty()) {
+            System.out.println("栈为空，无法取出元素");
+            return null;
+        }
+        return top.getData();
+    }
+
+    @Override
     public void display() {
         Node p = top;
         while (p != null){

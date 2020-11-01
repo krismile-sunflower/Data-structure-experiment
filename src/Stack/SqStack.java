@@ -52,6 +52,15 @@ public class SqStack implements IStack{
     }
 
     @Override
+    public Object getTop(){
+        if(isEmpty()) {
+            System.out.println("栈为空，无法取出元素");
+            return null;
+        }
+        return stackElem[top];
+    }
+
+    @Override
     public void display() {
         for(int i = top - 1; i >= 0; i--){
             System.out.print(stackElem[i].toString() + " ");

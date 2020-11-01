@@ -7,5 +7,6 @@ public interface IStack {
     public Object peek();
     public void push(Object x) throws Exception;
     public Object pop();
+    public Object getTop();
     public void display();
 }
