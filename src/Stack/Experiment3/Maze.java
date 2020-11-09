@@ -1,32 +1,133 @@
 package Stack.Experiment3;
 
-public class Maze {
-    public static void main(String[] args) {
-        int[][] maze = new int[11][10];
-        for(int i = 0; i < 10; i++){
-            maze[0][i] = 1;
-            maze[10][i] = 1;
-        }
-        for(int i = 1; i < 10; i++){
-            maze[i][0] = 1;
-            maze[i][9] = 1;
-        }
-        maze[1][1] = 0;maze[1][2] = 0; maze[1][3] = 1; maze[1][4] = 0; maze[1][5] = 0; maze[1][6] = 0; maze[1][7] = 1; maze[1][8] = 0;
-        maze[2][1] = 0;maze[2][2] = 0; maze[2][3] = 1; maze[2][4] = 0; maze[2][5] = 0; maze[2][6] = 0; maze[2][7] = 1; maze[2][8] = 0;
-        maze[3][1] = 0;maze[3][2] = 0; maze[3][3] = 0; maze[3][4] = 0; maze[3][5] = 1; maze[3][6] = 1; maze[3][7] = 0; maze[3][8] = 1;
-        maze[4][1] = 0;maze[4][2] = 1; maze[4][3] = 1; maze[4][4] = 1; maze[4][5] = 0; maze[4][6] = 0; maze[4][7] = 1; maze[4][8] = 0;
-        maze[5][1] = 0;maze[5][2] = 0; maze[5][3] = 0; maze[5][4] = 1; maze[5][5] = 0; maze[5][6] = 0; maze[5][7] = 0; maze[5][8] = 0;
-        maze[6][1] = 0;maze[6][2] = 1; maze[6][3] = 0; maze[6][4] = 0; maze[6][5] = 0; maze[6][6] = 1; maze[6][7] = 0; maze[6][8] = 1;
-        maze[7][1] = 0;maze[7][2] = 1; maze[7][3] = 1; maze[7][4] = 1; maze[7][5] = 1; maze[7][6] = 0; maze[7][7] = 0; maze[7][8] = 1;
-        maze[8][1] = 1;maze[8][2] = 1; maze[8][3] = 0; maze[8][4] = 0; maze[8][5] = 0; maze[8][6] = 1; maze[8][7] = 0; maze[8][8] = 1;
-        maze[9][1] = 1;maze[9][2] = 1; maze[9][3] = 0; maze[9][4] = 0; maze[9][5] = 0; maze[9][6] = 0; maze[9][7] = 0; maze[9][8] = 0;
+import Stack.LinkStack;
 
-        for(int i = 0; i < 11; i++){
-            for(int j = 0; j <10; j++){
-                System.out.print(maze[i][j] + " ");
+import java.util.Scanner;
+
+public class Maze {
+    private Cell[][] cells;
+    private Maze(char[][] maze){
+        cells = createMaze(maze);
+    }
+
+    private Cell[][] createMaze(char[][] maze){
+        Cell[][] cells = new Cell[maze.length][];
+        for(int i = 0; i < maze.length; i++){
+            char[] row = maze[i];
+            cells[i] = new Cell[row.length];
+            for (int j = 0; j < row.length; j++){
+                cells[i][j] = new Cell(i, j, false, maze[i][j], 0);
+            }
+        }
+        return cells;
+    }
+
+    public void printMaze(){
+        for (int i = 0; i < cells.length; i++){
+            for (int j = 0; j < cells[i].length; j++){
+                System.out.print(cells[i][j].c);
             }
             System.out.println();
         }
-        System.out.println(maze[3][1]);
     }
+
+    public void findPath(int sx, int sy, int ex, int ey) throws Exception {
+        LinkStack s = new LinkStack();
+        Cell startCell = cells[sx][sy];
+        Cell endCell = cells[ex][ey];
+        s.push(startCell);
+        startCell.visited = true;
+        startCell.dir = 2;
+        while (!s.isEmpty()){
+            Cell current = (Cell)s.getTop();
+            System.out.print(current.toString() + " ");
+            if(current == endCell){
+                while(!s.isEmpty()){
+                    Cell cell = (Cell)s.pop();
+                    cell.c = '*';
+                    while (!s.isEmpty() && ! isAdjoinCell((Cell)s.getTop(), cell)){
+                        s.pop();
+                    }
+                }
+                System.out.println("找到从起点到终点的路径.");
+                printMaze();
+
+                return;
+            }
+            else {
+                int x = current.x;
+                int y = current.y;
+                int count = 0;
+                if(isValidWayCell(cells[x+1][y])){
+                    cells[x][y].dir = 4;
+                    cells[x+1][y].visited = true;
+                    s.push(cells[x+1][y]);
+                    count++;
+                }
+                if(isValidWayCell(cells[x][y+1])){
+                    cells[x][y].dir = 2;
+                    cells[x][y+1].visited = true;
+                    s.push(cells[x][y+1]);
+                    count++;
+                }
+                if(isValidWayCell(cells[x-1][y])){
+                    cells[x][y].dir = 1;
+                    cells[x-1][y].visited = true;
+                    s.push(cells[x-1][y]);
+                    count++;
+                }
+                if(isValidWayCell(cells[x][y-1])){
+                    cells[x][y].dir = 3;
+                    cells[x][y-1].visited = true;
+                    s.push(cells[x][y-1]);
+                    count++;
+                }
+                if(count == 0)
+                    s.pop();
+            }
+        }
+        System.out.println("没有从起点到终点的路线.");
+    }
+
+    private boolean isAdjoinCell(Cell cell1, Cell cell2){
+        if(cell1.x == cell2.x && Math.abs(cell1.y - cell2.y) < 2)
+            return true;
+        if(cell1.y == cell2.y && Math.abs(cell1.x - cell2.x) < 2)
+            return true;
+        return false;
+    }
+
+    private boolean isValidWayCell(Cell cell){
+        return cell.c == '0' && !cell.visited;
+    }
+
+    public static void main(String[] args) throws Exception {
+        char[][] mazeChars = {
+                {'1', '1', '1', '1', '1', '1', '1', '1', '1', '1'},
+                {'1', '0', '0', '1', '1', '1', '0', '0', '1', '1'},
+                {'1', '0', '0', '1', '1', '0', '0', '1', '0', '1'},
+                {'1', '0', '0', '0', '0', '0', '0', '1', '0', '1'},
+                {'1', '0', '0', '0', '0', '1', '1', '0', '0', '1'},
+                {'1', '0', '0', '1', '1', '1', '1', '0', '0', '1'},
+                {'1', '0', '0', '0', '0', '1', '0', '1', '0', '1'},
+                {'1', '0', '1', '1', '0', '0', '0', '1', '0', '1'},
+                {'1', '1', '0', '0', '0', '0', '0', '0', '0', '1'},
+                {'1', '1', '1', '1', '1', '1', '1', '1', '1', '1'}
+        };
+        Maze maze = new Maze(mazeChars);
+        System.out.println("迷宫如下：");
+        maze.printMaze();
+        Scanner scanner = new Scanner(System.in);
+        int sx, sy, ex, ey;
+        System.out.print("请输入起点坐标所在行（1-8）：");
+        sx = scanner.nextInt();
+        System.out.print("请输入起点坐标所在列（1-8）：");
+        sy = scanner.nextInt();
+        System.out.print("请输入终点坐标所在行（1-8）：");
+        ex = scanner.nextInt();
+        System.out.print("请输入终点坐标所在列（1-8）：");
+        ey = scanner.nextInt();
+        maze.findPath(sx, sy, ex, ey);
+    }
+
 }

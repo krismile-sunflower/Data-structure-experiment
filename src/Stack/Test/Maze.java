@@ -1,7 +1,6 @@
 package Stack.Test;
 
 import Stack.LinkStack;
-import Stack.SqStack;
 
 import java.util.Scanner;
 
@@ -38,6 +37,7 @@ public class Maze {
         Cell endCell = cells[ex][ey];
         s.push(startCell);
         startCell.visited = true;
+        startCell.dir = 2;
         while (!s.isEmpty()){
             Cell current = (Cell)s.getTop();
             System.out.print(current.toString() + " ");
@@ -59,25 +59,25 @@ public class Maze {
                 int y = current.y;
                 int count = 0;
                 if(isValidWayCell(cells[x+1][y])){
-                    cells[x+1][y].dir = 4;
+                    cells[x][y].dir = 4;
                     cells[x+1][y].visited = true;
                     s.push(cells[x+1][y]);
                     count++;
                 }
                 if(isValidWayCell(cells[x][y+1])){
-                    cells[x][y+1].dir = 2;
+                    cells[x][y].dir = 2;
                     cells[x][y+1].visited = true;
                     s.push(cells[x][y+1]);
                     count++;
                 }
                 if(isValidWayCell(cells[x-1][y])){
-                    cells[x-1][y].dir = 1;
+                    cells[x][y].dir = 1;
                     cells[x-1][y].visited = true;
                     s.push(cells[x-1][y]);
                     count++;
                 }
                 if(isValidWayCell(cells[x][y-1])){
-                    cells[x][y-1].dir = 3;
+                    cells[x][y].dir = 3;
                     cells[x][y-1].visited = true;
                     s.push(cells[x][y-1]);
                     count++;
