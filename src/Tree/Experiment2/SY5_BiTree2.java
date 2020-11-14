@@ -46,6 +46,11 @@ public class SY5_BiTree2 {
         }
     }
 
+    /**
+     * 二叉树镜像的非递归方法
+     * @param T
+     * @throws Exception
+     */
     private static void exChang1(BiTreeNode T) throws Exception{
         SqStack s = new SqStack(100);
         if(T != null){
@@ -65,6 +70,10 @@ public class SY5_BiTree2 {
         }
     }
 
+    /**
+     * 二叉树镜像的递归方法
+     * @param T
+     */
     private static void exChang2(BiTreeNode T){
         if(T != null){
 
