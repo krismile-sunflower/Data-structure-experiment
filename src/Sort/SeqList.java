@@ -1,10 +1,13 @@
 package Sort;
 
+import Sort.Experiment2.CopareMoveNum;
+
 import java.util.Arrays;
 
 public class SeqList {
     private RecordNode[] r;
     private int curlen;
+    public CopareMoveNum[] cm = {new CopareMoveNum(),new CopareMoveNum()};
 
     public SeqList() {
     }
@@ -94,4 +97,78 @@ public class SeqList {
         }
     }
 
+    /**
+     * 冒泡排序
+     */
+    public void bubbleSort() {
+        RecordNode temp;
+        boolean flag = true;
+        for (int i = 1; i < this.length() && flag; i++) {
+            flag = false;
+            for (int j = 0; j < this.length() - i; j++) {
+                if (getR()[j].getKey().compareTo(getR()[j + 1].getKey()) > 0) {
+                    cm[0].setCpn(cm[0].getCpn() + 1);
+                    temp = getR()[j];
+                    getR()[j] = getR()[j + 1];
+                    getR()[j + 1] = temp;
+                    flag = true;
+                    cm[0].setMvn(cm[0].getMvn() + 3);
+                }
+            }
+        }
+    }
+
+    /**
+     * 一趟快速排序
+     * @param i
+     * @param j
+     * @return
+     */
+    public int Partition(int i, int j){
+        RecordNode pivot = getR()[i];
+        cm[1].setMvn(cm[1].getMvn() + 1);
+        while (i < j) {
+            while (i < j && pivot.getKey().compareTo(getR()[j].getKey()) <= 0){
+                j--;
+                cm[1].setCpn(cm[1].getCpn() + 1);
+            }
+            if(i < j) {
+                getR()[i] = getR()[j];
+                i++;
+                cm[1].setMvn(cm[1].getMvn() + 1);
+            }
+            while (i < j && pivot.getKey().compareTo(getR()[i].getKey()) > 0) {
+                i++;
+                cm[1].setCpn(cm[1].getCpn() + 1);
+            }
+            if(i < j) {
+                getR()[j] = getR()[i];
+                j--;
+                cm[1].setMvn(cm[1].getMvn() + 1);
+            }
+        }
+        getR()[i] = pivot;
+        cm[1].setMvn(cm[1].getMvn() + 1);
+        return i;
+    }
+
+    /**
+     * 递归形式快速排序
+     * @param low
+     * @param high
+     */
+    public void qSort(int low, int high) {
+        if(low < high) {
+            int pivotloc = Partition(low, high);
+            qSort(low, pivotloc - 1);
+            qSort(pivotloc + 1, high);
+        }
+    }
+
+    /**
+     * 顺序表快速排序
+     */
+    public void quickSort() {
+        qSort(0, this.curlen - 1);
+    }
 }
