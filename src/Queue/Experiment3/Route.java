@@ -1,5 +1,8 @@
 package Queue.Experiment3;
 
+/**
+ * 航班路线
+ */
 public class Route {
     private String terminalName;    //终点站名
     private String flightNumber;    //航班号

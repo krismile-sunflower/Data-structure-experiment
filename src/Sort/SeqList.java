@@ -87,7 +87,6 @@ public class SeqList {
      */
     public void insertSortWithGuard() {
         int i, j;
-        System.out.println("带监视哨的直接插入序列");
         for (i = 2; i < this.curlen; i++) {
             r[0] = r[i];
             for (j = i - 1; r[0].getKey().compareTo(r[j].getKey()) < 0; j--) {

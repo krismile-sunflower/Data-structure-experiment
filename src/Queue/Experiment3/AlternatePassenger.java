@@ -1,8 +1,11 @@
 package Queue.Experiment3;
 
+/**
+ * 替补客户
+ */
 public class AlternatePassenger {
-    private String name;
-    private String needBookingNumber;
+    private String name;    //替补客户姓名
+    private String needBookingNumber;   //替补客户所需票量
 
     public AlternatePassenger() {
     }

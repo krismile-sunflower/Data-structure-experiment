@@ -70,13 +70,11 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", sex=" + sex +
-                ", tel='" + tel + '\'' +
-                ", address='" + address + '\'' +
-                ", grades=" + grades +
-                '}';
+        return "学号: " + id + "  " +
+                " 姓名: " + name + "\t" +
+                " 性别: " + sex + "\t" +
+                " 电话: " + tel + "\t" +
+                " 地址: " + address + "  " +
+                " 成绩: " + grades ;
     }
 }

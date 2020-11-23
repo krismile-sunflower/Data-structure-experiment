@@ -1,5 +1,8 @@
 package Queue.Experiment3;
 
+/**
+ * 已订票客户
+ */
 public class BookingPassenger {
     private String name;    //订票乘客姓名
     private int bookingNumber;      //订票数量
