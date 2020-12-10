@@ -3,14 +3,14 @@ package Sort.Experiment3;
 import Sort.RecordNode;
 import Sort.SeqList;
 
-public class SY5_Sort_3 extends SeqList {
+public class SY6_Sort_3 extends SeqList {
     static int maxSize = 10;
-    public SY5_Sort_3(int maxSize){
+    public SY6_Sort_3(int maxSize){
         super(maxSize);
     }
 
     private static  SeqList createdList(Student[] students) throws Exception {
-        SeqList SL =new SY5_Sort_3(maxSize + 1);
+        SeqList SL =new SY6_Sort_3(maxSize + 1);
         for (Student student : students) {
             Integer total = student.getEnglish() + student.getMath();
             RecordNode r = new RecordNode(total, student);

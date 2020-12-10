@@ -3,10 +3,10 @@ package Sort.Experiment1;
 import Sort.RecordNode;
 import Sort.SeqList;
 
-public class SY5_Sort_1 extends SeqList {
+public class SY6_Sort_1 extends SeqList {
     static int maxSize = 20;
 
-    public SY5_Sort_1(int maxSize) {
+    public SY6_Sort_1(int maxSize) {
         super(maxSize);
     }
 
@@ -17,7 +17,7 @@ public class SY5_Sort_1 extends SeqList {
      * @throws Exception
      */
     private static SeqList createList(int[] d) throws Exception {
-        SeqList SL = new SY5_Sort_1(maxSize + 1);
+        SeqList SL = new SY6_Sort_1(maxSize + 1);
         for (int i = 0; i < d.length; i++) {
             RecordNode r = new RecordNode(d[i]);
             SL.insert(SL.length(), r);

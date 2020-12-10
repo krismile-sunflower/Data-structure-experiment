@@ -4,6 +4,22 @@ public class IndexNode {
     private int maxKey;
     private Node head;
 
+    public IndexNode() {
+    }
+
+    public IndexNode(int maxKey) {
+        this.maxKey = maxKey;
+    }
+
+    public IndexNode(Node head) {
+        this.head = head;
+    }
+
+    public IndexNode(int maxKey, Node head) {
+        this.maxKey = maxKey;
+        this.head = head;
+    }
+
     public int getMaxKey() {
         return maxKey;
     }

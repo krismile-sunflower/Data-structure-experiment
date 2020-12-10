@@ -4,6 +4,22 @@ public class Node {
     private int key;
     private Node next;
 
+    public Node(int key) {
+        this.key = key;
+    }
+
+    public Node(Node next) {
+        this.next = next;
+    }
+
+    public Node(int key, Node next) {
+        this.key = key;
+        this.next = next;
+    }
+
+    public Node() {
+    }
+
     public int getKey() {
         return key;
     }
@@ -27,4 +43,6 @@ public class Node {
                 ", next=" + next +
                 '}';
     }
+
+
 }

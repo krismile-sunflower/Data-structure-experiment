@@ -13,6 +13,22 @@ public class SqList implements IList{
         listElem = new Object[maxSize];
     }
 
+    public Object[] getListElem() {
+        return listElem;
+    }
+
+    public void setListElem(Object[] listElem) {
+        this.listElem = listElem;
+    }
+
+    public int getCurLen() {
+        return curLen;
+    }
+
+    public void setCurLen(int curLen) {
+        this.curLen = curLen;
+    }
+
     @Override
     public void clear() {
         curLen = 0;
