@@ -64,8 +64,10 @@ public class SY7_Search3 extends SqList{
         Scanner sc = new Scanner(System.in);
         int id = sc.nextInt();
         int findId = L.binarySearch(students, id);
-        if(findId == -1){
-            throw new Exception("您输入的id有误。");
+        while (findId == -1){
+            System.out.print("您输入的id有误, 请重新输入id(1001--1005): ");
+            id = sc.nextInt();
+            findId = L.binarySearch(students,id);
         }
         System.out.println(students[findId].toString());
     }
