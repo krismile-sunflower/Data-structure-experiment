@@ -19,7 +19,7 @@ public class SY10_Graph1 {
 
     private static void BFS(IGraph G, int v) throws Exception{
         visited1[v] = true;
-        System.out.print(G.getVex(v).toString() + "");
+        System.out.print(G.getVex(v).toString() + " ");
         LinkQueue Q = new LinkQueue();
         Q.offer(v);
         while (!Q.isEmpty()){
@@ -62,6 +62,7 @@ public class SY10_Graph1 {
         G.createGraph();
         System.out.println("图的广度遍历序列: ");
         BSFTraverse(G);
+        System.out.println();
         System.out.println("图的深度遍历序列: ");
         DFSTraverse(G);
 
