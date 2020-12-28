@@ -40,7 +40,7 @@ public class Maze {
         startCell.dir = 2;
         while (!s.isEmpty()){
             Cell current = (Cell)s.getTop();
-            System.out.print(current.toString() + " ");
+            System.out.println(current.toString() + " ");
             if(current == endCell){
                 while(!s.isEmpty()){
                     Cell cell = (Cell)s.pop();

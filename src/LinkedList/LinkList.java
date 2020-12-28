@@ -31,6 +31,20 @@ public class LinkList {
         return p.getData();
     }
 
+    public int indexOf(Object x){
+        Node p = head.getNext();
+        int j = 0;
+        while (p != null && !p.getData().equals(x)){
+            p = p.getNext();
+            ++j;
+        };
+        if (p != null){
+            return j;
+        } else{
+            return -1;
+        }
+    }
+
     public void insert(int i, Object x) throws Exception{
         Node p = head;
         int j = -1;

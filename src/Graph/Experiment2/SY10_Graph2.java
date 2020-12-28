@@ -35,7 +35,9 @@ public class SY10_Graph2 {
         }
     }
 
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws Exception {
+        MGraph G = new MGraph();
+        G.createGraph();
+        CC_BFS(G);
     }
 }

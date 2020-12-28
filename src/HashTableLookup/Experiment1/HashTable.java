@@ -1,5 +1,6 @@
-package HashTableLookup;
+package HashTableLookup.Experiment1;
 
+/*顺序表方式的哈希表*/
 public class HashTable {
     private RecordNode[] table;
     public HashTable(int maxSize){

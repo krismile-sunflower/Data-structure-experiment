@@ -1,8 +1,5 @@
 package HashTableLookup.Experiment1;
 
-import HashTableLookup.HashTable;
-import HashTableLookup.RecordNode;
-
 import java.util.Scanner;
 
 public class SY9_HashSearch1 {

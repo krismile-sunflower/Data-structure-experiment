@@ -1,4 +1,4 @@
-package HashTableLookup;
+package HashTableLookup.Experiment1;
 
 public class RecordNode {
     private Comparable key;

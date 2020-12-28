@@ -9,6 +9,22 @@ public class MGraph implements IGraph {
     private Object[] vexs;
     private int[][] arcs;
 
+    public static int getINFINITY() {
+        return INFINITY;
+    }
+
+    public GraphKind getKind() {
+        return kind;
+    }
+
+    public Object[] getVexs() {
+        return vexs;
+    }
+
+    public int[][] getArcs() {
+        return arcs;
+    }
+
     public MGraph() {
         this(null, 0, 0, null, null);
     }
